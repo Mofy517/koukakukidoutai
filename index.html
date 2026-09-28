@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#20242b">
+<title>攻殻機動隊 設定判別ツール</title>
+<style>
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif;background:#eef0f2;color:#20242b}
+header{background:#20242b;color:#fff;padding:18px 16px;position:sticky;top:0;z-index:5}
+h1{font-size:21px;margin:0 0 4px}main{max-width:720px;margin:auto;padding:12px}
+.card{background:#fff;border-radius:14px;padding:14px;margin:10px 0;box-shadow:0 2px 10px #0001}
+h2{font-size:17px;margin:0 0 12px}.grid{display:grid;grid-template-columns:1fr 120px;gap:8px 10px;align-items:center}
+label{font-size:14px}input{width:100%;box-sizing:border-box;padding:10px;border:1px solid #c8cbd0;border-radius:9px;font-size:16px}
+button{width:100%;padding:14px;border:0;border-radius:10px;font-size:16px;font-weight:700}.primary{background:#20242b;color:#fff}.clear{margin-top:8px}
+.note,.small{font-size:12px;color:#666;line-height:1.6}.result{text-align:center;font-size:25px;font-weight:800}
+.bar{height:12px;background:#e5e6e8;border-radius:10px;overflow:hidden;margin:8px 0 14px}.bar i{display:block;height:100%;background:#20242b}
+table{width:100%;border-collapse:collapse}th,td{padding:8px;border-bottom:1px solid #eee;text-align:left}td:last-child,th:last-child{text-align:right}
+.warn{background:#fff3cd}
+</style></head><body>
+<header><h1>スマスロ 攻殻機動隊</h1><div>設定判別ツール</div></header><main>
+
+<div class="card"><h2>基本データ</h2><div class="grid">
+<label>通常時ゲーム数</label><input id="g" type="number" min="0">
+<label>AT初当たり</label><input id="at" type="number" min="0">
+<label>CZ初当たり（S.A.M./タチコマ）</label><input id="cz" type="number" min="0">
+</div><p class="note">AT・CZの初当たり確率は設定差が比較的大きい主力項目です。</p></div>
+
+<div class="card"><h2>200G・400G タチコマCZ</h2><div class="grid">
+<label>200/400G到達回数</label><input id="gczN" type="number" min="0">
+<label>タチコマCZ当選</label><input id="gczK" type="number" min="0">
+</div><p class="note">200G・400G到達時の当選率を入力。公開値：設定1～6＝30.0%, 32.9%, 37.5%, 41.7%, 45.8%, 48.3%。</p></div>
+
+<div class="card"><h2>AT引き戻しストック</h2><div class="grid">
+<label>AT引き戻し抽選回数</label><input id="stockN" type="number" min="0">
+<label>ストック当選回数</label><input id="stockK" type="number" min="0">
+</div><p class="note">トータル当選率：設定1～6＝3.3%, 4.6%, 5.8%, 7.1%, 8.3%, 9.6%。</p></div>
+
+<div class="card"><h2>CZ失敗後「視覚HACK」</h2><div class="grid">
+<label>CZ失敗回数</label><input id="hackN" type="number" min="0">
+<label>視覚HACK発生</label><input id="hackK" type="number" min="0">
+</div><p class="note">視覚フラグ保有率：設定1～6＝5.7%, 6.1%, 6.9%, 9.0%, 10.1%, 10.6%。</p></div>
+
+<div class="card"><h2>CZ終了画面</h2><div class="grid">
+<label>青空＋公安9課（設定2以上）</label><input id="c2" type="number" min="0">
+<label>バカンス（設定4以上）</label><input id="c4" type="number" min="0">
+<label>全員集合（設定6）</label><input id="c6" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>AT終了画面・一枚絵</h2><div class="grid">
+<label>戦闘中素子（高設定示唆）</label><input id="aweak" type="number" min="0">
+<label>トグサ（奇数示唆）</label><input id="odd" type="number" min="0">
+<label>バトー（偶数示唆）</label><input id="even" type="number" min="0">
+<label>電脳素子・紫枠（設定6）</label><input id="a6" type="number" min="0">
+<label>アオイ・金枠（設定4以上）</label><input id="a4" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>サミートロフィー</h2><div class="grid">
+<label>銅（設定2以上）</label><input id="t2" type="number" min="0">
+<label>銀（設定3以上）</label><input id="t3" type="number" min="0">
+<label>金（設定4以上）</label><input id="t4" type="number" min="0">
+<label>キリン柄（設定5以上）</label><input id="t5" type="number" min="0">
+<label>虹（設定6）</label><input id="t6" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>S.A.M. エピソード</h2><div class="grid">
+<label>同一エピソード連続（設定2以上）</label><input id="ep2" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>獲得枚数表示・ED</h2><div class="grid">
+<label>246枚OVER（設定2以上）</label><input id="m246" type="number" min="0">
+<label>456枚OVER（設定4以上）</label><input id="m456" type="number" min="0">
+<label>666枚OVER（設定6）</label><input id="m666" type="number" min="0">
+<label>ED上パネル紫（設定2以上）</label><input id="ed2" type="number" min="0">
+<label>ED上パネル虹（設定6）</label><input id="ed6" type="number" min="0">
+</div></div>
+
+<div class="card"><h2>補助データ</h2><div class="grid">
+<label>タチコマの家出当選回数</label><input id="tachiko" type="number" min="0">
+<label>殲滅ZONE突入回数</label><input id="sen" type="number" min="0">
+<label>殲滅ZONE→CZ以上</label><input id="senK" type="number" min="0">
+</div><p class="note">設定差の全抽選値が公開されていない補助項目は、記録用として入力できます。</p></div>
+
+<div class="card"><button id="calc" class="primary">設定推測を計算</button><button id="clear" class="clear">入力をクリア</button></div>
+<div id="result"></div>
+<div class="card"><p class="small">公開値をもとにした簡易ベイズ推定です。小役（リプレイ・スイカ・チャンス目・チェリー・押し順ベル・共通ベル）は全設定共通とされているため計算対象外です。設定示唆の出現率が非公開のものは「設定○以上/設定6」の下限・除外要素として扱います。</p></div>
+</main>
+<script>
+const S=[1,2,3,4,5,6];
+const at=[336.3,332,319.6,298.7,285.8,278];
+const cz=[238,236.3,231.7,220.9,214,210.1];
+const gcz=[.30,.329,.375,.417,.458,.483];
+const stock=[.033,.046,.058,.071,.083,.096];
+const hack=[.057,.061,.069,.09,.101,.106];
+const num=id=>Math.max(0,Number(document.getElementById(id).value)||0);
+function bin(k,n,p){if(!n||!k)return 0;if(k>n)return -Infinity;p=Math.max(1e-9,Math.min(.999999,p));return k*Math.log(p)+(n-k)*Math.log(1-p)}
+function lower(lp,i,c,min){return c&&S[i]<min?-Infinity:lp}
+function calc(){
+ let lp=S.map(()=>Math.log(1/6)),g=num('g');
+ for(let i=0;i<6;i++){
+  if(g&&num('at'))lp[i]+=bin(num('at'),g,1/at[i]);
+  if(g&&num('cz'))lp[i]+=bin(num('cz'),g,1/cz[i]);
+  if(num('gczN'))lp[i]+=bin(num('gczK'),num('gczN'),gcz[i]);
+  if(num('stockN'))lp[i]+=bin(num('stockK'),num('stockN'),stock[i]);
+  if(num('hackN'))lp[i]+=bin(num('hackK'),num('hackN'),hack[i]);
+
+  const lows=[[num('c2'),2],[num('c4'),4],[num('c6'),6],[num('a4'),4],[num('a6'),6],
+  [num('t2'),2],[num('t3'),3],[num('t4'),4],[num('t5'),5],[num('t6'),6],
+  [num('ep2'),2],[num('m246'),2],[num('m456'),4],[num('m666'),6],[num('ed2'),2],[num('ed6'),6]];
+  for(const [c,m] of lows)lp[i]=lower(lp[i],i,c,m);
+
+  if(num('odd'))lp[i]+=(S[i]%2?Math.log(.65):Math.log(.35))*num('odd');
+  if(num('even'))lp[i]+=(S[i]%2===0?Math.log(.65):Math.log(.35))*num('even');
+  if(num('aweak'))lp[i]+=Math.log([.8,.9,1,1.08,1.16,1.24][i])*num('aweak');
+  if(num('tachiko'))lp[i]+=Math.log([.9,.94,.98,1.03,1.08,1.12][i])*num('tachiko');
+  if(num('sen'))lp[i]+=Math.log([.9,.94,.98,1.04,1.09,1.14][i])*num('sen');
+ }
+ if(lp.every(x=>!Number.isFinite(x))){
+  document.getElementById('result').innerHTML='<div class="card warn">入力した設定示唆に矛盾があります。トロフィー・終了画面・設定6示唆などを確認してください。</div>';return;
+ }
+ const mx=Math.max(...lp),w=lp.map(x=>Number.isFinite(x)?Math.exp(x-mx):0),z=w.reduce((a,b)=>a+b,0),q=w.map(x=>100*x/z),bi=q.indexOf(Math.max(...q));
+ let h='<div class="card"><h2>設定推測結果</h2><div class="result">設定'+S[bi]+'：'+q[bi].toFixed(1)+'%</div><div class="bar"><i style="width:'+q[bi]+'%"></i></div><table><tr><th>設定</th><th>推定割合</th></tr>';
+ q.forEach((x,i)=>h+='<tr><td>設定'+S[i]+'</td><td>'+x.toFixed(1)+'%</td></tr>');
+ h+='</table><p class="small">※公式の設定期待度ではありません。公開されている確率をベイズ的に統合した簡易推定です。強い設定示唆は下位設定を除外する要素として扱っています。</p></div>';
+ document.getElementById('result').innerHTML=h;document.getElementById('result').scrollIntoView({behavior:'smooth'});
+}
+document.getElementById('calc').onclick=calc;
+document.getElementById('clear').onclick=()=>{document.querySelectorAll('input').forEach(x=>x.value='');document.getElementById('result').innerHTML=''};
+</script></body></html>
